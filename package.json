@@ -1,0 +1,25 @@
+{
+  "name": "web-scrapping",
+  "version": "1.0.0",
+  "description": "This project will scrap the html data of website and do some stuff with it",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sukhbirsekhon/web-scrapping.git"
+  },
+  "author": "Sukhbir Sekhon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sukhbirsekhon/web-scrapping/issues"
+  },
+  "homepage": "https://github.com/sukhbirsekhon/web-scrapping#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "puppeteer": "^3.2.0",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.5"
+  }
+}
