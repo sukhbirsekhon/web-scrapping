@@ -1,4 +1,5 @@
 const request = require('request');
+const Promise = require('es6-promise').Promise;
 
 const current = document.getElementById(`current`);
 const open = document.getElementById(`open`);
@@ -18,8 +19,8 @@ const sunset = document.getElementById(`sunset`);
 /**
  * This is a function to extract specific stock quote details
  */
-function aapl() {
-  request(`https://finnhub.io/api/v1/quote?symbol=AAPL&token=brcpu1vrh5rcn6su4e9g`, { json: true }, (err, res, body) => {
+function stock(companyName) {
+  request(`https://finnhub.io/api/v1/quote?symbol=` + companyName + `&token=brcpu1vrh5rcn6su4e9g`, { json: true }, (err, res, body) => {
     if (err) { return console.log(err); }
 
     current.innerHTML = `Current Price: ` + body.c;
@@ -28,7 +29,7 @@ function aapl() {
     low.innerHTML = `Low Price: ` + body.l;
   });
 }
-aapl();
+stock(`AAPL`);
 
 /**
  * This function extracts covid19 USA states data
@@ -64,7 +65,6 @@ function temp() {
   sunset.innerHTML = `Sunset: ` + timeConverter(body.sys.sunset);
   });
 }
-
 temp();
 
 /**
@@ -82,7 +82,34 @@ function timeConverter(time) {
   return formattedTime;
 }
 
+/**
+ * Converts kelvin temperature to Fahrenheit
+ * 
+ * @param {*} temp 
+ */
 function tempConverter(temp) {
   const fahrenheitTemp = ((temp - 273.15) * (9/5)) + 32;
   return fahrenheitTemp;
 }
+
+/**
+ * News api 
+ * 
+ * @param {*} category 
+ * @param {*} country 
+ */
+function news(category, country) {
+
+  request(`http://newsapi.org/v2/top-headlines?country=` + country + `&category=` + category + `&apiKey=e82c49ff8e464ab6b26a17b43d712d93`, { json: true }, (err, res, body) => {
+    if (err) { return console.log(err); }
+
+    console.log(body.length);
+
+    let i;
+    for(i = 0; i < body.totalResults; i++){
+      // title += body.articles[i].title;
+      console.log(body.articles[i].title);
+    }
+  });
+}
+news(`business`, `us`);

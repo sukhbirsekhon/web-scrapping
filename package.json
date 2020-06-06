@@ -4,14 +4,12 @@
   "description": "This project will scrap the html data of website and do some stuff with it",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sukhbirsekhon/web-scrapping.git"
-  },
-  "scripts": {
-    "start": "electron ."
   },
   "author": "Sukhbir Sekhon",
   "license": "ISC",
@@ -21,7 +19,9 @@
   "homepage": "https://github.com/sukhbirsekhon/web-scrapping#readme",
   "dependencies": {
     "electron": "^9.0.2",
+    "es6-promise": "^4.2.8",
     "finnhub": "^1.0.0",
+    "promise": "^8.1.0",
     "request": "^2.88.2"
   }
 }
